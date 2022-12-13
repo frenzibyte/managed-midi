@@ -17,8 +17,10 @@ jobs:
           dotnet-version: 6.0.x
         
       - name: Restore dependencies
-        run: dotnet restore ./**/*.csproj
-        
+        run: |
+          dotnet restore ./managed-midi.sln
+          dotnet restore ./Commons.Music.Midi.DotNetCore/Commons.Music.Midi.DotNetCore.csproj
+
       - name: Build projects
         run: |
           dotnet build ./managed-midi.sln
