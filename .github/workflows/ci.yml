@@ -10,18 +10,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          submodules: recursive
         
       - name: Setup .NET 6.0
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 6.0.x
         
-      - name: Restore dependencies
+      - name: Restore Dependencies
         run: |
           dotnet restore ./managed-midi.sln
           dotnet restore ./Commons.Music.Midi.DotNetCore/Commons.Music.Midi.DotNetCore.csproj
 
-      - name: Build projects
+      - name: Build Projects
         run: |
           dotnet build ./managed-midi.sln
           dotnet build ./Commons.Music.Midi.DotNetCore/Commons.Music.Midi.DotNetCore.csproj
