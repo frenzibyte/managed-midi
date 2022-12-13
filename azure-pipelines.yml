@@ -23,8 +23,8 @@ jobs:
     inputs:
       command: restore
       projects: |
-　　　　　　external/alsa-sharp/dotnetcore/**/*.csproj
-　　　　　　Commons.Music.Midi.DotNetCore/*.csproj
+        external/alsa-sharp/dotnetcore/**/*.csproj
+        Commons.Music.Midi.DotNetCore/*.csproj
 
   - task: DotNetCoreCLI@2
     displayName: 'dotnet build'
