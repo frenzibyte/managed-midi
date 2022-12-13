@@ -7,7 +7,7 @@ trigger:
 jobs:
 - job: macosx
   pool:
-    name: Hosted VS2022
+    name: Hosted Agent
     demands:
     - msbuild
     - visualstudio
