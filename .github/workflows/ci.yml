@@ -20,15 +20,6 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 6.0.x
-          
-      - name: .NET Version
-        run: dotnet --info
-  
-      - name: MSBuild version
-        run: msbuild --version
-        
-      - name: NuGet version
-        run: nuget help
 
       - name: Install .NET iOS Workload
         run: dotnet workload install ios
@@ -39,7 +30,7 @@ jobs:
       - name: Build Projects
         run: dotnet build managed-midi.Core.slnf
 
-  build-framewrok:
+  build-framework:
     name: Build .NET Framework
     runs-on: windows-latest
     timeout-minutes: 60
@@ -52,16 +43,13 @@ jobs:
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
-  
-      - name: Restore Dependencies
-        run: dotnet restore managed-midi.Windows.slnf
 
       - name: Build Projects
-        run: msbuild managed-midi.Windows.slnf
+        run: msbuild managed-midi.Windows.slnf /restore
 
   build-xamarin:
     name: Build Xamarin
-    runs-on: windows-latest
+    runs-on: macos-latest
     timeout-minutes: 60
 
     steps:
@@ -70,13 +58,5 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup .NET 6.0
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 6.0.x
-
-      - name: Restore Dependencies
-        run: dotnet restore managed-midi.Xamarin.slnf
-
       - name: Build Projects
-        run: dotnet build managed-midi.Xamarin.slnf
+        run: msbuild managed-midi.Xamarin.slnf /restore
