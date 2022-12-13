@@ -5,7 +5,7 @@ trigger:
     - master
 
 jobs:
--  job: macosx
+- job: macosx
   pool:
     name: Hosted VS2022
     demands:
