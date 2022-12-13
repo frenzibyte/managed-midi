@@ -41,11 +41,16 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup MSBuild
+      - name: Setup MSBuild v15
         uses: microsoft/setup-msbuild@v1.1
+        with:
+          vs-version: '15.8'
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.1.1
 
       - name: Build Projects
-        run: msbuild managed-midi.Windows.slnf /restore
+        run: msbuild managed-midi.Windows.slnf
 
   build-xamarin:
     name: Build Xamarin
