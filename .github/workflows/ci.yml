@@ -19,7 +19,7 @@ jobs:
           dotnet-version: 6.0.x
           
       - name: .NET Version
-        run: dotnet info
+        run: dotnet --info
   
       - name: MSBuild version
         run: msbuild --version
