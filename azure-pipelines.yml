@@ -16,33 +16,33 @@ jobs:
   - task: NuGetToolInstaller@1
     displayName: 'Use NuGet 6.4.0'
     inputs:
-　　　　versionSpec: 6.4.0
+      versionSpec: 6.4.0
 
   - task: DotNetCoreCLI@2
     displayName: 'Restore .NET Core projects'
     inputs:
-　　　　command: restore
-　　　　projects: |
+      command: restore
+      projects: |
 　　　　　　external/alsa-sharp/dotnetcore/**/*.csproj
 　　　　　　Commons.Music.Midi.DotNetCore/*.csproj
 
   - task: DotNetCoreCLI@2
     displayName: 'dotnet build'
     inputs:
-  　　　projects: 'Commons.Music.Midi.DotNetCore/*.csproj'
+      projects: 'Commons.Music.Midi.DotNetCore/*.csproj'
 
   - task: NuGetCommand@2
     displayName: 'NuGet restore **\*.sln'
     inputs:
-  　　　restoreSolution: 'managed-midi.sln'
+      restoreSolution: 'managed-midi.sln'
 
   - task: VSBuild@1
     displayName: 'Build solution **\*.sln'
     inputs:
-  　　　configuration: Debug
+      configuration: Debug
 
   - task: NuGetCommand@2
     displayName: 'NuGet pack'
     inputs:
-  　　　command: pack
-  　　　packagesToPack: 'managed-midi.nuspec'
+      command: pack
+      packagesToPack: 'managed-midi.nuspec'
