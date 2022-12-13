@@ -32,7 +32,7 @@ jobs:
 
   build-framework:
     name: Build .NET Framework
-    runs-on: windows-2019
+    runs-on: windows-latest
     timeout-minutes: 60
 
     steps:
@@ -41,16 +41,14 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup MSBuild v15
+      - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
-        with:
-          vs-version: '15.8'
 
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1.1.1
 
       - name: Build Projects
-        run: msbuild managed-midi.Windows.slnf
+        run: msbuild managed-midi.Windows.slnf /restore
 
   build-xamarin:
     name: Build Xamarin
