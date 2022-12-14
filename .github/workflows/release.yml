@@ -72,5 +72,8 @@ jobs:
           name: managed-midi.${{ needs.check-if-tag.outputs.version }}
           path: ./*.nupkg
 
+      - name: List Directory
+        run: dir
+
       - name: Publish to NuGet 
         run: nuget push *.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
