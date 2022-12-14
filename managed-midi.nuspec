@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>managed-midi</id>
+    <id>frenzi.managed-midi</id>
     <version>1.9.14</version>
     <authors>Atsushi Eno</authors>
     <owners>Atsushi Eno</owners>
