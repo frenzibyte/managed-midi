@@ -25,10 +25,10 @@ jobs:
         run: dotnet workload install ios
 
       - name: Build .NET Core Projects
-        run: dotnet build managed-midi.Windows.slnf
+        run: dotnet build managed-midi.Core.slnf
 
       - name: Build .NET Framework Projects
         run: msbuild managed-midi.Windows.slnf -restore -p:RestorePackagesConfig=true
 
       - name: Build Xamarin Projects
-        run: msbuild managed-midi.Windows.slnf -restore
+        run: msbuild managed-midi.Xamarin.slnf -restore
