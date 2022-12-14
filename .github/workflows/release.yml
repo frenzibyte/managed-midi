@@ -1,0 +1,51 @@
+name: Release
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-2019
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+  
+      - name: Setup NuGet
+        uses: nuget/setup-nuget@v1.1.1
+  
+      - name: Install .NET 6.0
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Install .NET iOS Workload
+        run: dotnet workload install ios
+
+      - name: Build .NET Core Projects
+        run: dotnet build managed-midi.Core.slnf
+
+      - name: Build .NET Framework Projects
+        run: msbuild managed-midi.Windows.slnf -restore -p:RestorePackagesConfig=true
+
+      - name: Build Xamarin Projects
+        run: msbuild managed-midi.Xamarin.slnf -restore
+
+      - name: Pack Projects
+        run: nuget pack
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          path: managed-midi.*.nupkg
+
+      - name: Publish to NuGet 
+        run: nuget push managed-midi.*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
