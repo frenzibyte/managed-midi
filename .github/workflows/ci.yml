@@ -48,7 +48,7 @@ jobs:
         uses: NuGet/setup-nuget@v1.1.1
 
       - name: Build Projects
-        run: msbuild managed-midi.Windows.slnf
+        run: msbuild managed-midi.Windows.slnf /restore
 
   build-xamarin:
     name: Build Xamarin
