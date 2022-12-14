@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Commons.Music.Midi.Tests</RootNamespace>
     <AssemblyName>Commons.Music.Midi.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
+      <HintPath>..\packages\NUnit.3.10.1\lib\net48\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
