@@ -35,11 +35,11 @@ jobs:
 
       - name: Build Xamarin Projects
         run: msbuild managed-midi.Xamarin.slnf -restore
-        
+
       - name: Pack 
-        run: nuget pack
+        run: nuget pack -Version 1.0-github.event.head_commit.message
         
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          path: managed-midi.*.nupkg
+          path: ./*.nupkg
