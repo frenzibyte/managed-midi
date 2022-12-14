@@ -28,8 +28,8 @@ jobs:
             exit 128;
           fi
 
-  build:
-    name: Build
+  release:
+    name: Release
     needs: [check-if-tag]
     runs-on: windows-2019
     timeout-minutes: 60
@@ -73,4 +73,4 @@ jobs:
           path: ./*.nupkg
 
       - name: Publish to NuGet 
-        run: nuget push ./*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
+        run: nuget push *.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
